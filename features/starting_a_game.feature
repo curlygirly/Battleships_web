@@ -6,7 +6,7 @@ Feature: Starting the game
   Scenario: Registering
     Given I am on the homepage
     When I follow "New Game"
-    When I enter my "name"
-    When I click on "submit"
+    When I enter my name as "Jennifer"
+    When I click on "Submit"
     Then I should see "Welcome, start playing!"
 
