@@ -5,5 +5,8 @@ Feature: Starting the game
 
   Scenario: Registering
     Given I am on the homepage
-    When I follow "Fancy a new game?!?!"
-    Then I should see "What's your name?"
+    When I follow "New Game"
+    When I enter my "name"
+    When I click on "submit"
+    Then I should see "Welcome, start playing!"
+
