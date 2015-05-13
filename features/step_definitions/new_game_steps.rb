@@ -17,3 +17,7 @@ end
 Then(/^I should see "([^"]*)"$/) do |arg1|
   expect(page).to have_content(arg1)
 end
+
+When(/^I click on "([^"]*)" and I haven't entered my name$/) do |arg1|
+  click_on(arg1)
+  end

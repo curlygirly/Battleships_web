@@ -1,10 +1,16 @@
 <div>
-  <form action="/game">
-    What's your name?
-    <input type="text" name="name">
-    <input type="submit" value="Submit">
-  </form>
-
-
+    <% if  $name == "" %>
+      TELL ME YOUR NAME BITCH!
+      <form action="/game" method="post">
+      <input type="text" name="name">
+      <input type="submit" value="Submit">
+      </form>
+    <% else %>
+       What's your name?
+      <form action="/game" method="post">
+      <input type="text" name="name">
+      <input type="submit" value="Submit">
+      </form>
+    <% end %>
 
 </div>
