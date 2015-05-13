@@ -8,7 +8,7 @@ Feature: Starting the game
     When I follow "New Game"
     When I enter my name as "Jennifer"
     When I click on "Submit"
-    Then I should see "Welcome, now you're my bitch! I ORDER you to start playing!"
+    Then I should see "Welcome, let's play!"
 
   Scenario: Not registering
       Given I am on the homepage
