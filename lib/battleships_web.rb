@@ -4,7 +4,7 @@ require 'battleships'
 class BattleshipsApp < Sinatra::Base
   set :views, Proc.new { File.join(root, "..","views") }
 
-  # enable :sessions
+  enable :sessions
 
   $game = Game.new(Player, Board)
   $board = $game.own_board_view $game.player_1
@@ -20,9 +20,10 @@ class BattleshipsApp < Sinatra::Base
 end
 
   post '/game' do
-    $name = params[:name]
-    # $test = session[:name)]
-    # session[:name]
+    # $name = params[:name]
+    session[:name] = params[:name]
+    $name = session[:name]
+    # session[ - this is how you store in a session and create a cookie
     if $name == ""
       erb :game_new
     else
