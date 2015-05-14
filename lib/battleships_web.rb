@@ -4,6 +4,8 @@ require 'battleships'
 class BattleshipsApp < Sinatra::Base
   set :views, Proc.new { File.join(root, "..","views") }
 
+  # enable :sessions
+
   $game = Game.new(Player, Board)
   $board = $game.own_board_view $game.player_1
 
@@ -19,6 +21,8 @@ end
 
   post '/game' do
     $name = params[:name]
+    # $test = session[:name)]
+    # session[:name]
     if $name == ""
       erb :game_new
     else
@@ -29,6 +33,31 @@ end
   get '/game' do
     $board = $game.own_board_view $game.player_1
     erb :game
+  end
+
+  get '/placeship' do
+    erb :place_ship
+  end
+
+  post '/placeship' do
+    $coords = params[:shipbox]
+    $game.player_1.place_ship Ship.battleship, $coords.to_sym
+    $board = $game.own_board_view $game.player_1
+    erb :shoot_ship
+  end
+
+  get '/shoot_ship' do
+    erb :shoot_ship
+  end
+
+  post '/shoot_ship' do
+    $coords = params[:shipbox]
+    $game.player_1.shoot $coords.to_sym
+    erb :playing_page
+  end
+
+  get '/playing_page' do
+    "<pre><%= $game.opponent_board_view $game.player_1 %></pre>"
   end
 
   # start the server if ruby file executed directly

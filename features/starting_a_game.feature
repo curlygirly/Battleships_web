@@ -15,3 +15,8 @@ Feature: Starting the game
       When I follow "New Game"
       When I click on "Submit" and I haven't entered my name
       Then I should see "TELL ME YOUR NAME BITCH!"
+
+
+
+
+
